@@ -1,0 +1,42 @@
+{
+  "name": "cli3-template",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "build-stage": "vue-cli-service build --mode stage",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "@antv/f2": "^3.4.4",
+    "@babel/polyfill": "^7.4.4",
+    "axios": "^0.18.0",
+    "core-js": "^2.6.5",
+    "fastclick": "^1.0.6",
+    "lodash": "^4.17.15",
+    "mint-ui": "^2.2.13",
+    "nprogress": "^0.2.0",
+    "qs": "^6.7.0",
+    "vant": "^2.2.2",
+    "vconsole": "^3.3.0",
+    "vue": "^2.6.10",
+    "vue-router": "^3.0.3",
+    "vuex": "^3.0.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.0.5",
+    "@vue/cli-plugin-eslint": "^3.0.5",
+    "@vue/cli-service": "^3.0.5",
+    "babel-eslint": "^10.0.1",
+    "babel-plugin-component": "^1.1.1",
+    "babel-plugin-import": "^1.11.0",
+    "compression-webpack-plugin": "^2.0.0",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "less": "^3.0.4",
+    "less-loader": "^4.1.0",
+    "uglifyjs-webpack-plugin": "2.1.2",
+    "vue-template-compiler": "^2.5.21"
+  }
+}
