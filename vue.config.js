@@ -51,6 +51,6 @@ module.exports = {
       }
     }
   },
-  publicPath:'./',
-  // baseUrl:''
+  publicPath: '/fr/template/',
+  baseUrl: '/fr/template/'
 }

@@ -35,12 +35,17 @@
 
 <script>
 import { _formatDate } from '../utils/common'
+import { Toast } from 'vant'
 const cubic = value => Math.pow(value, 3)
 const easeInOutCubic = value => (value < 0.5 ? cubic(value * 2) / 2 : 1 - cubic((1 - value) * 2) / 2)
 export default {
   props: {
+    el: {
+      type: String,
+      default: ''
+    },
     height: {
-      // scroll-view高度  必须指定
+      // scroll-view高度
       type: Number,
       default: '',
       required: 'true'
@@ -220,6 +225,51 @@ export default {
     },
 
     /**
+     * 滚动到指定位置
+     * */
+    scrollToBottom(animation = false) {
+      const el = this.$refs.scrollViewRef
+      let scrollTop = el.scrollHeight
+      console.log(
+        this.height,
+        this.$refs.scrollViewRef.style.height,
+        this.$refs.scrollViewRef.scrollHeight,
+        this.$refs.scrollViewRef.offsetHeight,
+        this.$refs.scrollViewRef.clientHeight
+      )
+      let count = 0
+      let timer = setInterval(() => {
+        count++
+        if (count > 2000) {
+          clearInterval(timer)
+        } else {
+          if (el.style.height == `${el.clientHeight}px`) {
+            clearInterval(timer)
+            if (animation) {
+              // 滚动条过度动画
+              const beginTime = Date.now()
+              const beginValue = el.scrollTop
+              const diff = scrollTop - beginValue
+              const rAF = window.requestAnimationFrame || (func => setTimeout(func, 16))
+              const frameFunc = () => {
+                const progress = (Date.now() - beginTime) / 800
+                if (progress < 1) {
+                  el.scrollTop = beginValue + diff * easeInOutCubic(progress)
+                  rAF(frameFunc)
+                } else {
+                  el.scrollTop = scrollTop
+                }
+              }
+              rAF(frameFunc)
+            } else {
+              el.scrollTop = scrollTop
+            }
+          }
+        }
+      }, 1)
+    },
+
+    /**
      * 开始
      * */
     onTouchStart(e) {
@@ -380,7 +430,7 @@ export default {
     overflow-y: auto;
     box-sizing: border-box;
     over-flow: auto; /* winphone8和android4+ */
-    // -webkit-overflow-scrolling: touch; /* ios5+ */
+    -webkit-overflow-scrolling: touch; /* ios5+ */
   }
 }
 ::-webkit-scrollbar {
