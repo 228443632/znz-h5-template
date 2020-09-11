@@ -1,20 +1,21 @@
 module.exports = {
-  presets: [
+  presets: [['@vue/app', { useBuiltIns: 'entry' }]],
+  plugins: [
     [
-      '@vue/app', { "useBuiltIns": "entry" }
-    ]
-  ],
-  "plugins": [
-    ["component",
+      'import',
       {
-        "libraryName": "mint-ui",
-        "style": true
-      }
+        libraryName: 'vant',
+        libraryDirectory: 'es',
+        style: true
+      },
+      'vant'
     ],
-    ['import', {
-      libraryName: 'vant',
-      libraryDirectory: 'es',
-      style: true
-    }, 'vant']
+    [
+      'import',
+      {
+        libraryName: 'mand-mobile',
+        libraryDirectory: 'lib'
+      }
+    ]
   ]
 }

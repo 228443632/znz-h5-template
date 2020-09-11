@@ -1,0 +1,37 @@
+/*图片过渡动画*/
+.nav-img-enter-active,
+.nav-img-leave-active {
+  transition: all 0.6s ease;
+}
+.nav-img-enter,
+.nav-img-leave-active {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+
+/*点击缩小*/
+.button-animation--scale {
+  &:active {
+    transform: scale(0.9);
+    transition: 0.2s ease-out;
+  }
+}
+
+/*点击下拉*/
+.button-animation--translateY {
+  &:active {
+    transform: translateY(2px);
+    transition: 0.2s ease-out;
+  }
+}
+
+/* fade */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.28s;
+}
+
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
+}

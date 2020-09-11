@@ -1,90 +1,83 @@
 <template>
-  <div class="index">
-    <div class="tip">项目开始前先确定UI规范</div>
-    <div class="color--primary color">
-      <div class="color__label">主色</div>
-      <div class="color__value">#1EA9DA</div>
-    </div>
-    <div class="color--border color">
-      <div class="color__label">边框 </div>
-      <div class="color__value">#e9eaec</div>
-    </div>
-
-    <div class="color--title color">
-      <div class="color__label">标题 </div>
-      <div class="color__value">#262626</div>
-    </div>
-    <div class="color--sub color">
-      <div class="color__label">次标题 </div>
-      <div class="color__value">#8c8c8c</div>
-    </div>
-    <div class="color--content color">
-      <div class="color__label">正文 </div>
-      <div class="color__value">#595959</div>
-    </div>
-    <div class="color--disable color">
-      <div class="color__label">失效 </div>
-      <div class="color__value">#bbbec4</div>
-    </div>
-
+  <div class="md-example-child md-example-child-tabs md-example-child-tab-bar-6">
+    <md-tab-bar v-model="current" :items="items" @change="onTabChange"></md-tab-bar>
+    <md-swiper
+      ref="swiper"
+      :autoplay="0"
+      :is-prevent="false"
+      :is-loop="false"
+      :has-dots="false"
+      :ink-length="20"
+      @before-change="onSwiperChange"
+    >
+      <md-swiper-item>
+        <div class="md-example-child-scroll-view">
+          <md-scroll-view
+            ref="scrollView"
+            @scroll="$_onScroll"
+          >
+            <div
+              v-for="i in list"
+              class="scroll-view-item"
+              :key="i"
+              @click="$_onItemClick(i)"
+            >
+              {{i}}
+            </div>
+          </md-scroll-view>
+        </div>
+      </md-swiper-item>
+      <md-swiper-item>
+        又是一年，她又遇到了他，他正牵着孩子的手，走的飞快。
+      </md-swiper-item>
+    </md-swiper>
   </div>
 </template>
+
 <script>
+import { TabBar, Swiper, SwiperItem } from 'mand-mobile'
+
+import {ScrollView, Toast} from 'mand-mobile'
+
 export default {
+  name: 'tab-bar-demo',
+  /* DELETE */
+  title: '手势切换',
+  titleEnUS: 'Gesture switching',
+  /* DELETE */
   data() {
     return {
-      colors: []
+      current: 0,
+      items: [
+        { name: 0, label: '标签1' },
+        { name: 1, label: '标签2' }
+      ],
+      list: 1000,
+    }
+  },
+  methods: {
+    onSwiperChange(from, to) {
+      this.current = to
+    },
+    onTabChange(item, index) {
+      this.$refs.swiper.goto(index)
     }
   }
 }
 </script>
-<style lang="less" scoped>
-@import url('~@/style/variables.less');
-@import url('~@/style/mixin.less');
-.index {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  .tip {
-    color: @title-color;
-    font-size: @title-font;
-  }
-  .color {
-    width: 6rem;
-    height: 1.5rem;
-    margin-top: 0.2rem;
-    border-radius: 4px;
-    font-size: @content-font;
-    &__label {
-      color: #fff;
-      padding: 0.2rem;
-    }
-    &__value {
-      color: #fff;
-      padding-left: 0.2rem;
-      font-size: @subcontent-font;
-    }
-  }
-  .color--primary {
-    background: @primary-color;
-  }
-  .color--bg {
-    background: @bg-color;
-  }
-  .color--border {
-    background: @border-color;
-  }
-  .color--title {
-    background: @title-color;
-  }
-  .color--sub {
-    background: @sub-color;
-  }
-  .color--content {
-    background: @content-color;
-  }
-  .color--disable {
-    background: @disable-color;
-  }
+
+<style lang="less">
+.md-example-child-tab-bar-6 .md-swiper {
+  background: #fff;
 }
+.md-example-child-tab-bar-6 .md-swiper .md-swiper-item {
+  padding: 20px;
+  box-sizing: border-box;
+  font-size: 24px;
+  line-height: 1.5;
+  color: #666;
+}
+  .md-example-child-scroll-view {
+    height: 60vh;
+  }
 </style>
