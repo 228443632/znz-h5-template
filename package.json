@@ -7,6 +7,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "build-stage": "vue-cli-service build --mode stage",
+    "dll": "webpack -p --progress --config ./webpack.dll.conf.js",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
@@ -16,14 +17,16 @@
     "core-js": "^2.6.5",
     "fastclick": "^1.0.6",
     "lodash": "^4.17.15",
+    "mand-mobile": "^2.5.11",
     "nprogress": "^0.2.0",
     "qs": "^6.7.0",
     "vant": "^2.2.2",
-    "mand-mobile": "^2.5.11",
     "vconsole": "^3.3.0",
     "vue": "^2.6.10",
     "vue-router": "^3.0.3",
-    "vuex": "^3.0.1"
+    "vuetify": "^2.3.10",
+    "vuex": "^3.0.1",
+    "webpack-bundle-analyzer": "^3.8.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.2.0",
@@ -32,6 +35,8 @@
     "babel-eslint": "^10.0.1",
     "babel-plugin-component": "^1.1.1",
     "babel-plugin-import": "^1.11.0",
+    "babel-polyfill": "^6.26.0",
+    "clean-webpack-plugin": "^3.0.0",
     "compression-webpack-plugin": "^2.0.0",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
@@ -39,7 +44,10 @@
     "less-loader": "^4.1.0",
     "postcss-loader": "^3.0.0",
     "postcss-pxtorem": "^5.1.1",
-    "uglifyjs-webpack-plugin": "2.1.2",
-    "vue-template-compiler": "^2.5.21"
+    "sass": "^1.26.10",
+    "sass-loader": "^10.0.2",
+    "uglifyjs-webpack-plugin": "1.1.1",
+    "vue-template-compiler": "^2.5.21",
+    "webpack-cli": "^3.3.12"
   }
 }

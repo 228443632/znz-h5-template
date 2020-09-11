@@ -11,20 +11,23 @@
       @before-change="onSwiperChange"
     >
       <md-swiper-item>
-        <div class="md-example-child-scroll-view">
-          <md-scroll-view
-            ref="scrollView"
-            @scroll="$_onScroll"
-          >
-            <div
-              v-for="i in list"
-              class="scroll-view-item"
-              :key="i"
-              @click="$_onItemClick(i)"
-            >
-              {{i}}
-            </div>
-          </md-scroll-view>
+        <div class="md-example-child-scroll-view" style="overflow: auto">
+          又是一年，她又遇到了他，他正牵着孩子的手，走的飞快。
+          又是一年，她又遇到了他，他正牵着孩子的手，走的飞快。
+          又是一年，她又遇到了他，他正牵着孩子的手，走的飞快。
+          又是一年，她又遇到了他，他正牵着孩子的手，走的飞快。
+          又是一年，她又遇到了他，他正牵着孩子的手，走的飞快。
+          又是一年，她又遇到了他，他正牵着孩子的手，走的飞快。
+          又是一年，她又遇到了他，他正牵着孩子的手，走的飞快。
+          又是一年，她又遇到了他，他正牵着孩子的手，走的飞快。
+          又是一年，她又遇到了他，他正牵着孩子的手，走的飞快。
+
+        </div>
+        <div
+          v-ripple
+          class="text-center elevation-2 pa-12 headline"
+        >
+          HTML element with v-ripple
         </div>
       </md-swiper-item>
       <md-swiper-item>
@@ -58,6 +61,7 @@ export default {
   methods: {
     onSwiperChange(from, to) {
       this.current = to
+      console.log(from, to)
     },
     onTabChange(item, index) {
       this.$refs.swiper.goto(index)
