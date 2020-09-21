@@ -2,7 +2,6 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router/router'
 import store from './store/'
-import "@babel/polyfill" //30+kB TODO::
 import '@/style/'
 import '@/plugins/'
 import vuetify from '@/plugins/vuetify'
