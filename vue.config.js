@@ -4,8 +4,8 @@
  */
 const path = require('path')
 const webpack = require('webpack')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const CompressionPlugin = require('compression-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const { library } = require('./dll.config.js')
 
@@ -118,21 +118,19 @@ module.exports = {
       // 为生产环境修改配置...
       config.plugins.push(
         new BundleAnalyzerPlugin(),
-        new UglifyJsPlugin({
-          uglifyOptions: {
+        new TerserPlugin({
+          cache: true,
+          parallel: true,
+          sourceMap: true,
+          terserOptions: {
             compress: {
-              warnings: false,
-              drop_debugger: true, // console
-              drop_console: true
-              // pure_funcs: ['console.log'] // 移除console
+              // 关键代码
+              warnings: true,
+              drop_console: true,
+              pure_funcs:['console.log'], // 移除consol
+              drop_debugger: false
             }
-            // output: {
-            //   // 去掉注释内容
-            //   comments: false
-            // }
-          },
-          sourceMap: false,
-          parallel: true
+          }
         }),
         new CompressionPlugin({
           test: /\.js$|\.html$|.\css/, //匹配文件名
@@ -160,6 +158,5 @@ module.exports = {
     )
   },
 
-  publicPath: '/fr/template/',
-  baseUrl: '/fr/template/'
+  publicPath: './',
 }
