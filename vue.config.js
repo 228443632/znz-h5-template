@@ -21,7 +21,7 @@ const externals = {
   vue: 'Vue',
   vuex: 'Vuex',
   'vue-router': 'VueRouter',
-  axios: 'axios',
+  axios: 'axios'
 }
 
 // vue.config.js
@@ -127,9 +127,10 @@ module.exports = {
               // 关键代码
               warnings: true,
               drop_console: true,
-              pure_funcs:['console.log'], // 移除consol
+              pure_funcs: ['console.log'], // 移除consol
               drop_debugger: false
-            }
+            },
+            extractComments: false
           }
         }),
         new CompressionPlugin({
@@ -158,5 +159,5 @@ module.exports = {
     )
   },
 
-  publicPath: './',
+  publicPath: './'
 }

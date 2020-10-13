@@ -1,3 +1,7 @@
+/**
+ * @Author bianpengfei
+ * @create 2020/9/11 16:55
+ */
 (function(doc, win) {
   var docEl = doc.documentElement,
     resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',

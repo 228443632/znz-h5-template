@@ -1,3 +1,7 @@
+/**
+ * @Author bianpengfei
+ * @create 2020/9/11 16:55
+ */
 //.prettierrc.js
 module.exports = {
   tabWidth: 2, //一个tab代表几个空格数，默认为80

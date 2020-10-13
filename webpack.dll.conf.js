@@ -1,3 +1,7 @@
+/**
+ * @Author bianpengfei
+ * @create 2020/9/11 16:55
+ */
 const path = require('path')
 const webpack = require('webpack')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')

@@ -96,6 +96,10 @@ export default {
    * */
   categoryClass({ parent_id = '', level = '' }, rnInfo) {
     if (parent_id === '' || level === '') throw new Error('缺少parent_id或level参数！')
+    const data = {
+      parent_id,
+      level
+    }
     return post({ url: base_api + 'category/class', params: data, rnInfo: rnInfo })
   },
 
@@ -104,6 +108,10 @@ export default {
    * */
   categoryList({ parent_id = '', level = '' }, rnInfo) {
     if (parent_id === '' || level === '') throw new Error('缺少parent_id或level参数！')
+    const data = {
+      parent_id,
+      level
+    }
     return post({ url: base_api + 'category/list', params: data, rnInfo: rnInfo })
   },
 

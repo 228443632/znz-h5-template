@@ -1,16 +1,14 @@
 <template>
   <div id="pages-index" style="height: 100vh; overflow: auto" v-scroll.self="callback">
-    <button @click.stop="btnClick">点击</button>
+    <button @click.stop="btnClick">点击1</button>
   </div>
 </template>
 
 <script>
 export default {
-  mounted() {
-  },
+  mounted() {},
 
   methods: {
-
     callback(val) {
       console.log(val)
     },
