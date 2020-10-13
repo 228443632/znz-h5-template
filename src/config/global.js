@@ -2,7 +2,7 @@ console.log(process.env.NODE_ENV)
 
 const server_producton = 'http://47.100.110.16:95'
 const server_test = 'http://frtest.compassedu.hk/fr/template'
-const server_local = 'http://192.168.0.15:8080'
+const server_local = `http://${ENV_HOST}:${ENV_PORT}`
 
 export default {
   publicUrl:

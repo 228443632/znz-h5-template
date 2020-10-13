@@ -10,8 +10,10 @@
     </transition>
   </div>
 </template>
+<script>
+console.log(`http://${ENV_HOST}:${ENV_PORT}`)
+</script>
 <style lang="less">
-@import '~animate.css';
 @import url('~@/style/variables.less');
 @import url('~@/style/mixin.less');
 #app {
