@@ -14,7 +14,7 @@
     "@antv/f2": "^3.4.4",
     "@babel/polyfill": "^7.4.4",
     "animate.css": "^3.7.2",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "core-js": "^3.6.4",
     "dayjs": "^1.9.1",
     "fastclick": "^1.0.6",
