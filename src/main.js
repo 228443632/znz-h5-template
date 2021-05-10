@@ -2,20 +2,19 @@
  * @Author bianpengfei
  * @create 2020/9/11 16:55
  */
+import '@/config/global'
 import Vue from 'vue'
 import App from './App.vue'
-import router from './router/router'
+import router from './router/'
 import store from './store/'
 import '@/style/'
 import '@/plugins/'
-import vuetify from '@/plugins/vuetify'
 
 //import './vconsole'
 
 Vue.config.productionTip = false
 
 new Vue({
-  vuetify,
   router,
   store,
   render: h => h(App)

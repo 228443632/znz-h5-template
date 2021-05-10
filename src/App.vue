@@ -1,21 +1,12 @@
 <template>
   <div id="app">
-    <keep-alive>
-      <router-view v-if="$route.meta.keepAlive"></router-view>
-    </keep-alive>
-
-    <!--页面不需要缓存-->
-    <transition enter-active-class="animated fadeIn" appear mode="out-in">
-      <router-view v-if="!$route.meta.keepAlive" />
-    </transition>
+    <router-view />
   </div>
 </template>
 <script>
 console.log(`http://${ENV_HOST}:${ENV_PORT}`)
 </script>
 <style lang="less">
-@import url('~@/style/variables.less');
-@import url('~@/style/mixin.less');
 #app {
   height: 100vh;
   background: #f7f7f7;

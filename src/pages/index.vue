@@ -1,11 +1,15 @@
 <template>
-  <div id="pages-index" style="height: 100vh; overflow: auto" v-scroll.self="callback">
-    <button @click.stop="btnClick">点击1</button>
+  <div id="pages-index" style="height: 100vh; overflow: auto">
+    <van-button @click.stop="$router.push('/index/test')">跳转到test</van-button>
+    <van-button type="primary" @click.stop="$router.push('/index/detail/1')">跳转到 详情页 2</van-button>
+
+    <input />
   </div>
 </template>
 
 <script>
 export default {
+  name: 'index-test',
   mounted() {},
 
   methods: {

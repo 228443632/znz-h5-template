@@ -1,20 +1,22 @@
-/**
- * @Author bianpengfei
- * @create 2020/9/11 16:55
- */
+// Vue
 import Vue from 'vue'
 import Vuex from 'vuex'
-import mutations from './mutations'
-import actions from './action'
-import getters from './getters'
-
+import pathify from './plugins/vuex-pathify'
+import { useVuexPersistencePlugin } from './plugins/vuex-persist'
 Vue.use(Vuex)
 
-const state = {}
-
-export default new Vuex.Store({
-  state,
-  getters,
-  actions,
-  mutations
+const modules = require.context('@/store/modules', true, /\.js$/)
+const store = new Vuex.Store({
+  modules: modules
+    .keys()
+    .reduce((pre, cur) => ({ ...pre, [cur.replace(/^\.\/(.*)\.\w+$/, '$1')]: modules(cur).default }), {}),
+  plugins: [
+    pathify.plugin,
+    useVuexPersistencePlugin({
+      key: 'extra',
+      excludes: ['user', 'app/menus', 'app/menusList', 'app/cacheRoutes', 'app/navArr']
+    })
+  ]
 })
+
+export default store

@@ -1,1 +1,1 @@
-import './common.less'
+import './app/common.less'

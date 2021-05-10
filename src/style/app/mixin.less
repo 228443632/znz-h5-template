@@ -1,0 +1,25 @@
+.text-ellipsis--one {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.text-ellipsis--muti(@lines:2) {
+  display: -webkit-box;
+  /*! autoprefixer: ignore next */
+
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: @lines;
+  overflow: hidden;
+}
+
+.click-active--opacity {
+  &:active {
+    opacity: 0.4;
+  }
+}
+
+.ios-bounce-android {
+  over-flow: auto; /* winphone8和android4+ */
+  -webkit-overflow-scrolling: touch; /* ios5+ */
+}

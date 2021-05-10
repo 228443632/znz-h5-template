@@ -92,50 +92,15 @@ const post = async ({ url, params = {}, rnInfo }) => {
 
 export default {
   /**
-   * 目录 class level => 1:返回全部层级  0:一层
-   * */
-  categoryClass({ parent_id = '', level = '' }, rnInfo) {
-    if (parent_id === '' || level === '') throw new Error('缺少parent_id或level参数！')
-    const data = {
-      parent_id,
-      level
-    }
-    return post({ url: base_api + 'category/class', params: data, rnInfo: rnInfo })
-  },
-
-  /**
-   * 目录 list level => 1:返回全部层级  0:一层
-   * */
-  categoryList({ parent_id = '', level = '' }, rnInfo) {
-    if (parent_id === '' || level === '') throw new Error('缺少parent_id或level参数！')
-    const data = {
-      parent_id,
-      level
-    }
-    return post({ url: base_api + 'category/list', params: data, rnInfo: rnInfo })
-  },
-
-  /**
-   * 获取国家 类目
-   * level => 1:返回全部层级  0:一层
-   * */
-  categoryCtry(data = {}, rnInfo) {
-    return post({ url: base_api + 'category/list', params: { parent_id: 3, level: 1, ...data }, rnInfo: rnInfo })
-  },
-
-  /**
-   * 获取专业 类目
-   * level => 1:返回全部层级  0:一层
-   * */
-  categoryMajor(data = {}, rnInfo) {
-    return post({ url: base_api + 'category/class', params: { parent_id: 0, level: 1, ...data }, rnInfo: rnInfo })
-  },
-
-  /**
    * 获取语言 类目
    * level => 1:返回全部层级  0:一层
    * */
   categoryLang(data = {}, rnInfo) {
     return post({ url: base_api + 'category/class', params: { parent_id: 5, level: 1, ...data }, rnInfo: rnInfo })
-  }
+  },
+
+
+
+
+
 }

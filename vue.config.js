@@ -7,9 +7,11 @@ const webpack = require('webpack')
 const CompressionPlugin = require('compression-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
-const { library } = require('./dll.config.js')
 const os = require('os')
-const dllPath = './public/vendor/'
+
+const { library } = require('./dll.config.js')
+const { proxy } = require('./src/config/index')
+
 const isProduction = process.env.NODE_ENV === 'production'
 const isDevelopment = process.env.NODE_ENV === 'development'
 
@@ -60,14 +62,7 @@ module.exports = {
       warnings: true,
       errors: true
     },
-    // 设置请求代理
-    proxy: {
-      '/api': {
-        target: '<url>',
-        ws: true,
-        changeOrigin: true
-      }
-    }
+    proxy: Object.values(proxy).reduce((pre, cur) => ({ ...pre, [cur['prefix']]: cur['rule'] }), {})
   },
 
   // 输出文件路径，默认为dist
@@ -186,5 +181,17 @@ module.exports = {
     )
   },
 
-  publicPath: './'
+  // 第三方插件配置
+  pluginOptions: {
+    'style-resources-loader': {
+      preProcessor: 'less',
+      patterns: [
+        resolve('./src/style/app/variables.less'),
+        resolve('./src/style/app/mixin.less'),
+        resolve('./src/style/app/transition.scss'),
+      ]
+    }
+  },
+
+  publicPath: '/'
 }
