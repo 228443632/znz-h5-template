@@ -1,4 +1,3 @@
-import './babel'
 import './rem'
 import './vant'
 import './fastclick'

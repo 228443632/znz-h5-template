@@ -8,6 +8,7 @@ const CompressionPlugin = require('compression-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const os = require('os')
+const dllPath = './public/vendor/'
 
 const { library } = require('./dll.config.js')
 const { proxy } = require('./src/config/index')
@@ -121,7 +122,7 @@ module.exports = {
 
   configureWebpack: config => {
     //入口文件
-    config.entry.app = ['babel-polyfill', './src/main.js']
+    config.entry.app = ['./src/main.js']
     if (isProduction) {
       // 为生产环境修改配置...
       let pluginsPro = [
@@ -188,7 +189,7 @@ module.exports = {
       patterns: [
         resolve('./src/style/app/variables.less'),
         resolve('./src/style/app/mixin.less'),
-        resolve('./src/style/app/transition.scss'),
+        resolve('./src/style/app/transition.scss')
       ]
     }
   },

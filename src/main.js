@@ -2,6 +2,8 @@
  * @Author bianpengfei
  * @create 2020/9/11 16:55
  */
+import 'core-js/stable'
+import 'regenerator-runtime/runtime'
 import '@/config/global'
 import Vue from 'vue'
 import App from './App.vue'
