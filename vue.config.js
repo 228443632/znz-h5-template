@@ -50,6 +50,8 @@ const externals = {
   axios: 'axios'
 }
 
+const publicPath = isProduction ? '/' : '/'
+
 // vue.config.js
 module.exports = {
   devServer: {
@@ -122,7 +124,8 @@ module.exports = {
 
   configureWebpack: config => {
     //入口文件
-    config.entry.app = ['./src/main.js']
+    config.entry.app = ['core-js/stable', 'regenerator-runtime/runtime', './src/main.js']
+
     if (isProduction) {
       // 为生产环境修改配置...
       let pluginsPro = [
@@ -177,7 +180,8 @@ module.exports = {
       }),
       new webpack.DefinePlugin({
         ENV_PORT: JSON.stringify(String(ENV_PORT)), // 端口
-        ENV_HOST: JSON.stringify(String(getNetworkIp())) // 局域网地址
+        ENV_HOST: JSON.stringify(String(getNetworkIp())), // 局域网地址
+        PUBLIC_PATH: JSON.stringify(String(publicPath)) // 静态资源前缀
       })
     )
   },
@@ -194,5 +198,5 @@ module.exports = {
     }
   },
 
-  publicPath: '/'
+  publicPath: publicPath
 }

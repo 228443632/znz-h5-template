@@ -4,7 +4,7 @@
  */
 module.exports = {
   library: {
-    vue: ['vue', 'vue-router', 'vuex'],
-    axios: ['axios'],
+    corejs: ['core-js', 'regenerator-runtime'],
+    vue: ['vue', 'vue-router', 'vuex', 'axios']
   }
 }

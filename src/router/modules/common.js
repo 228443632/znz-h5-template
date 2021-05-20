@@ -9,6 +9,7 @@ export const constantsRoutes = [
   {
     path: '/',
     component: () => import('@/layout/default/'),
+    redirect: '/index',
     name: '健康档案管理',
     icon: '',
     children: [
