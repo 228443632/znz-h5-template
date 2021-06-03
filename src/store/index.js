@@ -14,7 +14,7 @@ const store = new Vuex.Store({
     pathify.plugin,
     useVuexPersistencePlugin({
       key: 'extra',
-      excludes: ['user', 'app/menus', 'app/menusList', 'app/cacheRoutes', 'app/navArr']
+      excludes: ['user', 'app/menus', 'app/menusList', 'app/cacheRoutes', 'app/navArr', 'app/routingStack']
     })
   ]
 })

@@ -50,7 +50,7 @@ const externals = {
   axios: 'axios'
 }
 
-const publicPath = isProduction ? '/' : '/'
+const publicPath = isProduction ? '/fr/h5-template/' : '/'
 
 // vue.config.js
 module.exports = {

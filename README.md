@@ -24,5 +24,3 @@
 > ###### vant 文档：https://vant-contrib.gitee.io/vant/#/zh-CN/
 >
 > ###### mand-mobile 文档：https://didi.github.io/mand-mobile/#/zh-CN/docs/introduce
->
-> ###### vuetify 文档：https://vuetifyjs.com/en/getting-started/installation/

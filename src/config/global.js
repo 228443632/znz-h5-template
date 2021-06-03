@@ -7,34 +7,37 @@
 })(window, function () {
   const server_producton = 'http://47.100.110.16:95'
   const server_test = 'http://frtest.compassedu.hk/fr/template'
+  // eslint-disable-next-line no-undef
   const server_local = `http://${ENV_HOST}:${ENV_PORT}`
 
-  window.String.isString = args => Object.prototype.toString.call(args) === '[object String]'
-  window.Object.isObject = args => Object.prototype.toString.call(args) === '[object Object]'
-  window.Object.isNull = args => Object.prototype.toString.call(args) === '[object Null]'
-  window.Object.isUndefined = args => Object.prototype.toString.call(args) === '[object Undefined]'
-  window.Number.isNumber = args => Object.prototype.toString.call(args) === '[object Number]'
-  window.Function.isFunction = args => Object.prototype.toString.call(args) === '[object Function]'
-  window.Object.cloneDeep = obj => JSON.parse(JSON.stringify(obj))
-  window.Array.isArrayEmpty = args => Array.isArray(args) && args.length == 0
-  window.String.isStringEmpty = args => String.isString(args) && args == ''
+  String.isString = args => Object.prototype.toString.call(args) === '[object String]'
+  Object.isObject = args => Object.prototype.toString.call(args) === '[object Object]'
+  Object.isNull = args => Object.prototype.toString.call(args) === '[object Null]'
+  Object.isUndefined = args => Object.prototype.toString.call(args) === '[object Undefined]'
+  Number.isNumber = args => Object.prototype.toString.call(args) === '[object Number]'
+  Function.isFunction = args => Object.prototype.toString.call(args) === '[object Function]'
+  Object.cloneDeep = obj => JSON.parse(JSON.stringify(obj))
+  Array.isArrayEmpty = args => Array.isArray(args) && args.length == 0
+  String.isStringEmpty = args => String.isString(args) && args == ''
 
-  window.Number.prototype.mul = arg => {
-    //乘法
+  Number.prototype.mul = arg => {
+    // 乘法
     let m = 0,
       s1 = this.toString(),
       s2 = arg.toString()
     try {
       m += s1.split('.')[1].length
+      // eslint-disable-next-line no-empty
     } catch (e) {}
     try {
       m += s2.split('.')[1].length
+      // eslint-disable-next-line no-empty
     } catch (e) {}
     return (Number(s1.replace('.', '')) * Number(s2.replace('.', ''))) / Math.pow(10, m)
   }
 
-  window.Number.prototype.add = arg =>  {
-    //加法
+  Number.prototype.add = arg => {
+    // 加法
     let r1, r2, m
     try {
       r1 = this.toString().split('.')[1].length
@@ -50,29 +53,31 @@
     return (this.mul(m) + Number(arg).mul(m)).div(m)
   }
 
-  window.Number.prototype.sub = arg =>  {
-    //减法
+  Number.prototype.sub = arg => {
+    // 减法
     return this.add(-arg)
   }
-  window.Number.prototype.div = arg =>  {
-    //除法
+  Number.prototype.div = arg => {
+    // 除法
     let t1 = 0,
       t2 = 0,
       r1,
       r2
     try {
       t1 = this.toString().split('.')[1].length
+      // eslint-disable-next-line no-empty
     } catch (e) {}
     try {
       t2 = arg.toString().split('.')[1].length
+      // eslint-disable-next-line no-empty
     } catch (e) {}
     r1 = Number(this.toString().replace('.', ''))
     r2 = Number(arg.toString().replace('.', ''))
     return (r1 / r2) * Math.pow(10, t2 - t1)
   }
 
-  //四舍五入保留两位 n 数
-  window.Number.prototype.toFixed = function (n) {
+  // 四舍五入保留两位 n 数
+  Number.prototype.toFixed = function (n) {
     let times = Math.pow(10, n)
     let des = this * times + 0.5
     des = parseInt(des, 10) / times
@@ -80,7 +85,7 @@
   }
 
   // json解析，防止抛出异常
-  window.JSON.parseNoError = str => {
+  JSON.parseNoError = str => {
     try {
       return JSON.parse(str)
     } catch (e) {
@@ -88,8 +93,9 @@
     }
   }
 
-  /*进程环境*/
-  window.process = {
+  /* 进程环境*/
+  // eslint-disable-next-line no-global-assign
+  process = {
     ...process,
     env: {
       NODE_ENV: process.env.NODE_ENV,
@@ -97,8 +103,9 @@
     }
   }
 
-  /*挂在app信息*/
-  window.$app =  {
+  /* 挂在app信息*/
+  // eslint-disable-next-line no-undef
+  $app = {
     publicUrl:
       'development' == process.env.NODE_ENV
         ? server_local

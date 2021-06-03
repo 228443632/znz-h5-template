@@ -9,10 +9,10 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router/'
 import store from './store/'
-import '@/style/'
 import '@/plugins/'
+import '@/style/'
 
-//import './vconsole'
+import './vconsole'
 
 Vue.config.productionTip = false
 

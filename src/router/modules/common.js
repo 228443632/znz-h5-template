@@ -3,40 +3,88 @@
  * @Author bianpengfei
  * @create 2021/4/11 13:52
  */
-export default [{ path: '*', redirect: '/404', name: '/404', meta: { isHidden: true } }]
 
-export const constantsRoutes = [
+export const bottomTabRoutes = [
   {
     path: '/',
-    component: () => import('@/layout/default/'),
-    redirect: '/index',
-    name: '健康档案管理',
-    icon: '',
+    component: () => import('@/layout/tabs-view'),
+    redirect: '/home',
     children: [
       {
-        path: '/index',
-        name: 'index',
+        path: '/home',
+        name: 'tabs_view_home',
         meta: {
-          keepAlive: true
+          title: '健康档案首页',
+          permanentCache: true // 永久缓存
         },
-        component: () => import('@/pages/index')
+        component: () => import('@/pages/home')
       },
       {
-        path: '/index/test',
-        name: 'index-test',
+        path: '/health-value',
+        name: 'tabs_view_health_value',
         meta: {
-          keepAlive: true
+          title: '健康值',
+          permanentCache: true // 永久缓存
         },
-        component: () => import(/* webpackChunkName: "test" */ '@/pages/test.vue')
+        component: () => import('@/pages/health-value')
       },
+
       {
-        path: '/index/detail/:id',
-        name: 'index-test-detail',
+        path: '/basic-archives',
+        name: 'tabs_view_basic_archives',
         meta: {
-          keepAlive: true
+          title: '基础档案',
+          permanentCache: true // 永久缓存
         },
-        component: () => import(/* webpackChunkName: "test" */ '@/pages/detail.vue')
+        component: () => import('@/pages/basic-archives')
       }
     ]
   }
 ]
+
+export const constantsRoutes = [
+  {
+    path: '/',
+    component: () => import('@/layout/tabs-view'),
+    children: [
+      {
+        path: '/out-patient/record-list',
+        name: 'tabs_view_out_patient_record_list',
+        meta: {
+          cache: true,
+          title: '门诊就诊记录'
+        },
+        component: () => import('@/pages/out-patient/record-list')
+      },
+      {
+        path: '/out-patient/record-detail/:id(\\d+)',
+        name: 'tabs_view_out_patient_record_detail',
+        meta: {
+          cache: true,
+          title: '门诊记录'
+        },
+        component: () => import('@/pages/out-patient/record-detail')
+      },
+      {
+        path: '/in-patient/record-list',
+        name: 'tabs_view_in_patient_record_list',
+        meta: {
+          cache: true,
+          title: '住院就诊记录'
+        },
+        component: () => import('@/pages/in-patient/record-list')
+      },
+      {
+        path: '/in-patient/record-detail/:id(\\d+)',
+        name: 'tabs_view_in_patient_record_detail',
+        meta: {
+          cache: true,
+          title: '住院记录'
+        },
+        component: () => import('@/pages/in-patient/record-detail')
+      }
+    ]
+  }
+]
+
+export default bottomTabRoutes.concat(constantsRoutes)

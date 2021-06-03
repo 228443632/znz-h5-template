@@ -5,6 +5,7 @@
 </template>
 <script>
 console.log(`http://${ENV_HOST}:${ENV_PORT}`)
+export default {}
 </script>
 <style lang="less">
 #app {
@@ -12,7 +13,7 @@ console.log(`http://${ENV_HOST}:${ENV_PORT}`)
   background: #f7f7f7;
   position: relative;
   margin: 0 auto;
-  overflow: auto;
+  overflow: hidden auto;
   over-flow: auto; /* winphone8和android4+ */
   -webkit-overflow-scrolling: touch; /* ios5+ */
   max-width: @max-width;

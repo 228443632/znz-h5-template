@@ -1,3 +1,4 @@
+@import "./variables";
 .text-ellipsis--one {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -7,7 +8,6 @@
 .text-ellipsis--muti(@lines:2) {
   display: -webkit-box;
   /*! autoprefixer: ignore next */
-
   -webkit-box-orient: vertical;
   -webkit-line-clamp: @lines;
   overflow: hidden;
@@ -15,11 +15,59 @@
 
 .click-active--opacity {
   &:active {
-    opacity: 0.4;
+    background: #f2f3f5;
   }
 }
 
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-vertical-center(@height) {
+  display: flex;
+  align-items: center;
+  height: @height;
+}
+
+/*移动端ios 回弹*/
 .ios-bounce-android {
   over-flow: auto; /* winphone8和android4+ */
   -webkit-overflow-scrolling: touch; /* ios5+ */
 }
+
+/*滚动条样式*/
+.div--webkit--scrollbar(@bg: #f7f7f7) {
+  @media screen and(min-width:720px) {
+    &::-webkit-scrollbar-track {
+      border-radius: 3px;
+      background-color:@bg;
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 3px;
+      background-color: #c9cbd2;
+    }
+    &::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+      background-color: @bg;
+    }
+  }
+}
+
+/*骨架屏样式*/
+section.skeleton {
+  height: 100%;
+  overflow: hidden;
+  max-width: @max-width;
+  min-width: @min-width;
+  position: relative;
+  margin: auto;
+  p {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+  }
+}
+

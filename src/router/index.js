@@ -6,7 +6,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import { routerGuard } from './permission'
-import { constantsRoutes } from './modules/common'
+import routes from './modules/common'
 import { autowiredRoutes } from '@/router/hooks'
 
 Vue.use(Router)
@@ -15,12 +15,7 @@ const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   // routes: autowiredRoutes({})
-  routes: constantsRoutes,
-  scrollBehavior(to, from, savedPosition) {
-    return new Promise((resolve, reject) => {
-      resolve({ x: 0, y: to.meta.scrollTop?.[to.fullPath] || 0 })
-    })
-  }
+  routes: routes
 })
 routerGuard(router)
 

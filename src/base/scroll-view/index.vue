@@ -367,7 +367,6 @@ export default {
 </script>
 <style scoped lang="less">
 .scroll-view-wrapper {
-  width: 100vw;
   position: relative;
   overflow: hidden;
   .scroll-view__header {

@@ -1,3 +1,4 @@
+@import "./variables";
 html {
   font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -11,11 +12,34 @@ html {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
+  //align-items: center;
   justify-content: flex-start;
   box-sizing: border-box;
   font-size: 50px;
+  user-select: none;
 }
+
+* {
+  box-sizing: border-box;
+  user-select: none;
+  font-family: 'PingFangSC-Medium';
+}
+
+/*进度条加载颜色*/
+#nprogress .bar {
+  background: @success-color !important; //自定义颜色
+}
+
+// 可以在写在reset里面
+html,
+body,
+#app,
+.wx-pages {
+  height: 100%;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
 
 *,
 *:before,

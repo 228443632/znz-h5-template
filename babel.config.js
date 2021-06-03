@@ -13,13 +13,6 @@ module.exports = {
         style: true
       },
       'vant'
-    ],
-    [
-      'import',
-      {
-        libraryName: 'mand-mobile',
-        libraryDirectory: 'lib'
-      }
     ]
   ]
 }

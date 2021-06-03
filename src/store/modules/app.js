@@ -11,17 +11,40 @@ const state = {
   navShow: true, // 导航栏是否展示
   menuIsCollapse: app?.menuIsCollapse || false, // 菜单是否收缩
   breadcrumb: [], // 面包屑
-  navArr: [], // 导航
+  navArr: [], // 导航，
   menus: [], // 菜单树状
   menusList: [], // 菜单列表
   menuDefaultActive: '',
   menusDefaultOpeneds: app?.menusDefaultOpeneds || [], // 默认打开的菜单
-  isExternal: false // 是否是外部 默认是false
+  isExternal: false, // 是否是外部 默认是false
+  routingStack: [], // 路由堆栈
+  routePosition: {} // 路由滚动条位置 例子{'/index/home', {x: 10, y: 100}}
 }
 const mutations = make.mutations(state)
 
 const actions = {
   ...make.actions(state),
+  /*添加路由堆栈*/
+  pushRoutingStack({ state, commit }, data) {
+    const { routingStack, routePosition } = state
+    const idx = routingStack.findIndex(v => v.fullPath == data.fullPath)
+    let routeStackNew = []
+    if (idx >= 0) {
+      routeStackNew = routingStack.slice(0, idx + 1)
+    } else {
+      routeStackNew = routingStack.concat(data)
+    }
+    const prefixArr = routeStackNew.map(v => v.fullPath)
+    const routePositionNew = Object.keys(routePosition).reduce((p, c) => {
+      const key = c.split('||').slice().shift()
+      if (prefixArr.includes(key)) {
+        p[c] = routePosition[c]
+      }
+      return p
+    }, {})
+    commit('routingStack', routeStackNew)
+    commit('routePosition', routePositionNew)
+  },
 
   /*添加nav*/
   addNavArrItem({ state, commit }, data) {
